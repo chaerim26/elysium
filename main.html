@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Elysium main</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="css/main.css">
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/trunk/html5.js"></script>
+		<![endif]-->
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/swipe.js"></script>
+		<script src="js/jquery.easing.1.3.min.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		
+		<script>
+			$(function(){
+				$('#header_wrap a').mouseover(function(){
+					$('#header_wrap').stop().animate({'height':'250px'});
+					$('#header_wrap').css({'background':'#000','opacity':'0.8'});
+					$('#header_wrap').slideDown();
+					$('.lnb').show();
+					$('#header_wrap a').css('color','#fff');
+					$('.sub_menu img').attr({'src':'images/search.png','width':'20px','height':'20px'});
+				});
+
+				$('#header_wrap a').mouseleave(function(){
+					$('#header_wrap').stop().animate({'height':'70px'},function(){
+						$('#header_wrap').css('background','none');
+						$('.lnb').slideUp();
+						$('#header_wrap a').css('color','#000');
+					});
+					$('.lnb').hide();	
+					$('.sub_menu img').attr({'src':'images/search-b.png','width':'32px','height':'32px'});
+				});
+				//header end
+
+				$('.m_menuBtn').click(function(){
+						$('#m_menu').slideDown();
+						$('#m_header_wrap').hide();
+						$('#m_container').hide();
+					});
+					$('.m_close').click(function(){
+						$('#m_menu').slideUp();
+						$('#m_header_wrap').show();
+						$('#m_container').show();
+					});
+
+				$('.m_list_product li').click(function(){
+					$(this).children('ul').slideToggle();
+						$(this).children('.m_toggle').text('∨');
+					
+				});
+				//m_menu end
+
+				var img=$('.mainSlide');
+
+				var imgWidth=img.find('li').outerWidth();
+				var imgHeight=img.find('li').outerHeight();
+				var imgLength=img.find('li').length;
+				var slideId;
+
+				slideId=setInterval(function(){slideStart();},1000);
+				
+				function slideStart(){
+					img.css('width',imgWidth*imgLength+'%');
+					img.css('height',imgHeight+'px');
+
+					img.animate({left:-imgWidth+'%'},1500,function(){
+						$(this).append('<li>'+$(this).find('li:first').html()+'</li>');
+						$(this).find('li:first').remove();
+						$(this).css('left',0);
+					});
+				}
+				//mainslide end
+				
+				$('.icon').mouseover(function(){
+					$(this).siblings('.tit').show();
+				});
+				$('.icon').mouseleave(function(){
+					$(this).siblings('.tit').hide();
+				});
+				//imagine end
+
+				$('.on').click(function(){
+					$('.popUp').hide();
+				});	
+			});
+		</script>
+
+		<script>
+			$(function(){
+				var img=$('.m_banSlide');
+				var imgWidth=img.find('li').outerWidth();
+				var imgHeight=img.find('li').outerHeight();
+				var imgLength=img.find('li').length;
+				var slideId;
+
+				slideId=setInterval(slideStart,1500);
+				function slideStart(){
+					img.css('width',imgWidth*imgLength+'px');
+					img.css('height',imgHeight+'px');
+
+					img.animate({left:-imgWidth+'px'},1500,function(){
+						$(this).append('<li>'+$(this).find('li:first').html()+'</li>');
+						$(this).find('li:first').remove();
+						$(this).css('left',0);
+					});   
+				}
+				//m_bannerSlide end
+			});	
+		</script>
+		<!--데스크탑 script end-->
+
+		<script>
+			$(function(){
+				var img=$('.m_mainSlide');
+
+				var imgWidth=img.find('li').outerWidth();
+				var imgHeight=img.find('li').outerHeight();
+				var imgLength=img.find('li').length;
+				var slideId;
+
+				slideId=setInterval(function(){slideStart();},1000);
+				
+				function slideStart(){
+					img.css('width',imgWidth*imgLength+'%');
+					img.css('height',imgHeight+'px');
+
+					img.animate({left:-imgWidth+'%'},1500,function(){
+						$(this).append('<li>'+$(this).find('li:first').html()+'</li>');
+						$(this).find('li:first').remove();
+						$(this).css('left',0);
+					});
+				}
+				//m_mainslide end
+			});		
+		</script>
+
+		
+	</head>
+
+	<body>
+		<header id="m_header_wrap">
+			<h1><a href="main.html"><img src="images/w_logo.png" alt="모바일로고"></a></h1>
+			<p class="m_menuBtn"><a href="#"><img src="images/m_navbtn.png" alt="모바일메뉴"></a></p>
+		</header>
+		<!--m_header end-->
+		<article id="m_menu">
+			<section class="m_menu_header">
+				<p class="m_close"><a href="#"><img src="images/m_close.png"></a></p>
+				<div class="m_icon_wrap">
+					<div class="mm m_login">
+						<a href="#"><img src="images/m_login.png" width="20" height="25" alt="모바일로그인아이콘"></a>
+						<p><a href="#">로그인</a></p>
+					</div>
+					<div class="mm m_join">
+						<a href="#"><img src="images/m_join.png" width="27" height="25" alt="모바일회원가입아이콘"></a>
+						<p><a href="#">회원가입</a></p>
+					</div>
+					<div class="mm m_cart">
+						<a href="#"><img src="images/m_cart.png" width="28" height="25" alt="모바일장바구니아이콘"></a>
+						<p><a href="#">장바구니</a></p>
+					</div>
+					<div class="mm m_navMypage">
+						<a href="#"><img src="images/m_navMypage.png" width="25" height="25" alt="모바일마이페이지아이콘"></a>
+						<p><a href="#">마이페이지</a></p>
+					</div>
+				</div>
+			</section>
+			<section class="m_nav">
+				<ul class="m_list_product">
+					<li><a href="#">PRODUCT</a>
+					<a class="m_toggle" href="#">∨</a>
+						<ul class="m_subList">
+							<li><a href="product.html">패브릭 소파</a></li>
+							<li><a href="product.html">가죽 소파</a></li>
+							<li><a href="product.html">리클라이너</a></li>
+						</ul>
+					</li>
+					<li><a href="#">EVENT</a>
+					<a class="m_toggle" href="#">∨</a>
+						<ul class="m_subList">
+							<li><a href="#">진행 이벤트</a></li>
+							<li><a href="#">종료 이벤트</a></li>
+						</ul>
+					</li>
+					<li><a href="#">REVIEW</a>
+					<a class="m_toggle" href="#">∨</a>
+						<ul class="m_subList">
+							<li><a href="#">배송후기</a></li>
+							<li><a href="#">고객후기</a></li>
+						</ul>
+					</li>
+					<li><a href="#">ABOUT</a>
+					<a class="m_toggle" href="#">∨</a>
+						<ul class="m_subList">
+							<li><a href="product_detail.html">MAGAZINE</a></li>
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">온라인 문의</a></li>
+						</ul>
+					</li>
+					<li><a href="#">SHOWROOM</a>
+					</li>
+				</ul>
+			</section>
+			<section class="m_banner">
+				<ul class="m_banSlide">
+					<li class="m_bnn1"><img src="images/event_banner.png" alt="모바일배너1"></li>
+					<li class="m_bnn2"><img src="images/event_banner2.png" alt="모바일배너2"></li>
+					<li class="m_bnn3"><img src="images/event_banner3.png" alt="모바일배너3"></li>
+				</ul>
+			</section>
+			<section class="m_nav_footer">
+				<p>고객센터</p>
+				<p class="m_asNum">1577-5404</p>
+				<p class="m_asInfo">
+					AM 10:00~PM 18:00<br>
+					(월~금/공휴일 제외)
+				</p>
+			</section>
+		</article>
+		<!--m_menu end-->
+
+		<header id="header_wrap">
+			<h1><a href="main.html"><img src="images/logo.png" alt="로고"></a></h1>
+			<ul class="gnb">
+				<li><a href="product.html">PRODUCT</a>
+					<ul class="lnb">
+						<li><a href="#">패브릭 소파</a></li>
+						<li><a href="#">가죽 소파</a></li>
+						<li><a href="#">리클라이너</a></li>
+					</ul>
+				</li>
+				<li><a href="#">EVENT</a>
+					<ul class="lnb">
+						<li><a href="#">진행 이벤트</a></li>
+						<li><a href="#">종료 이벤트</a></li>
+					</ul>
+				</li>
+				<li><a href="#">REVIEW</a>
+					<ul class="lnb">
+						<li><a href="#">배송후기</a></li>
+						<li><a href="#">고객후기</a></li>
+					</ul>
+				</li>
+				<li><a href="#">ABOUT</a>
+					<ul class="lnb">
+						<li><a href="product_detail.html">MAGAZINE</a></li>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">온라인 문의</a></li>
+					</ul>
+				</li>
+				<li><a href="#">SHOWROOM</a></li>
+			</ul>
+			<ul class="sub_menu">
+				<li><a href="#"><img src="images/search-b.png" width="32" height="32" alt="검색아이콘"></a></li>
+				<li><a href="#">LOGIN</a></li>
+				<li><a href="#">JOIN</a></li>
+				<li><a href="#">CART</a></li>
+			</ul>
+		</header>
+		<!--header end-->
+		
+		<article id="m_container">
+			<section class="m_mainslide_section">
+				<ul class="m_mainSlide">
+					<li class="main1"><img src="images/m_mainslide1.png" alt="모바일메인슬라이드1"></li>
+					<li class="main2"><img src="images/m_mainslide2.png" alt="모바일메인슬라이드2"></li>
+					<li class="main3"><img src="images/m_mainslide3.png" alt="모바일메인슬라이드3"></li>
+				</ul>
+			</section>
+			<section class="m_ourFavorites">
+				<p class="m_main_tit">OUR FAVORITES</p>
+				<div class="m_best_wrap">
+					<div class="m_best_product_img1">
+						<img src="images/BEST1.png" alt="베스트소파1">
+						<p class="m_product_tit">로에베 3인 프리미엄 소가죽 소파</p>
+					</div>
+					<div class="m_best_product_img2">
+						<img src="images/best2.png" alt="베스트소파2">
+						<p class="m_product_tit">클렉트 4인 스위브 소파</p>
+					</div>
+					<div class="m_best_product_img3">
+						<img src="images/best3.png" alt="베스트소파3">
+						<p class="m_product_tit">리피 2인 에센셜 소가죽 소파</p>
+					</div>
+				</div>
+				<p class="m_more"><a href="product.html">MORE→</a></p>
+			</section>
+			<section class="m_imagineYourLife">
+				<p class="m_main_tit">IMAGINE<br>YOUR LIFE</p>
+				<div class="m_living_img">
+					<img src="images/imagine1.png" width="375" height="200">
+				</div>
+				<div class="thisProduct">
+					<p class="m_main_tit">THIS PRODUCT</p>
+					<div class="m_pro m_pro1">
+						<img src="images/m_pro1.png" alt="모바일제품1">
+						<p class="m_pro_tit">
+							클렉트 4인 소파<br>
+							7,480,000 WON
+						</p>
+						<div class="m_color_wrap">
+							<p class="m_pro_color"><img src="images/m_pro_color1.png"></p>
+							<p class="m_pro_color"><img src="images/m_pro_color2.png"></p>
+						</div>
+					</div>
+					<div class="m_pro m_pro2">
+						<img src="images/m_pro2.png" alt="모바일제품2">
+						<p class="m_pro_tit">
+							RUHIG S<br>
+							160,000 WON
+						</p>
+						<div class="m_color_wrap">
+							<p class="m_pro_color"><img src="images/m_pro_color3.png"></p>
+							<p class="m_pro_color"><img src="images/m_pro_color4.png"></p>
+						</div>
+					</div>
+					<div class="last m_pro m_pro3">
+						<img src="images/m_pro3.png" alt="모바일제품3">
+						<p class="m_pro_tit">
+							TIAM<br>
+							590,000 WON
+						</p>
+						<div class="m_color_wrap">
+							<p class="m_pro_color"><img src="images/m_pro_color2.png"></p>
+						</div>
+					</div>
+					<div class="last m_pro m_pro4">
+						<img src="images/m_pro4.png" alt="모바일제품4">
+						<p class="m_pro_tit">
+							데이즈 쿠션<br>
+							99,000 WON
+						</p>
+						<div class="m_color_wrap">
+							<p class="m_pro_color"><img src="images/m_pro_color1.png"></p>
+							<p class="m_pro_color"><img src="images/m_pro_color5.png"></p>
+							<p class="m_pro_color"><img src="images/m_pro_color3.png"></p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="m_material_info">
+				<div class="m_febric_detail">
+					<div class="m_febric_text">
+						<p class="m_title febric_tit">
+							THE	ORIGINAL EURO<br>
+							FABRIC, MADE IN SPAIN
+						</p>
+						<p class="m_explan febric_explan">
+							스페인 현지에서 생산된 기능성 소재를 직수입하여<br>
+							각종 오염물질을 쉽게 제거할 수 있고, 미생물 서식을<br>
+							방지 해줍니다.
+						</p>
+						<p class="m_info_more">
+							<a href="#">MORE→</a>
+						</p>
+					</div>
+					<img src="images/febric.png" alt="패브릭소재사진">
+				</div>
+				<div class="m_leather_detail">
+					<div class="m_leather_text">
+						<p class="m_title leather_tit">
+							PREMIUM<br>
+							ANILIN PLUS LEATHER
+						</p>
+						<p class="m_explan leather_explan">
+							내구성이 좋고 천연소재의 부드러운	질감을 유지하는<br>
+							명품 가죽입니다.
+						</p>
+						<p class="m_info_more">
+							<a href="#">MORE→</a>
+						</p>
+						<img src="images/leather.png" alt="가죽소재사진">
+					</div>	
+				</div>
+			</section>
+			<section class="m_bestReview">
+				<p class="m_main_tit">BEST REVIEW</p>
+				<div class="m_review m_review1">
+					<img src="images/REVIEW_6.jpg" alt="베스트리뷰1">
+					<p class="m_review_tit">
+						엘리시움 소파 너무 맘...<br>
+						김** ㅣ 안산 본점
+					</p>
+				</div>
+				<div class="m_review m_review2">
+					<img src="images/REVIEW_3.jpg" alt="베스트리뷰2">
+					<p class="m_review_tit">
+						리피를 선택할 때까지!<br>
+						박** ㅣ 남양주 본점
+					</p>
+				</div>
+				<div class="last m_review m_review3">
+					<img src="images/REVIEW_BEST1.jpg" alt="베스트리뷰3">
+					<p class="m_review_tit">
+						우리집 거실의 중심은 E...<br>
+						김** ㅣ 일산 직영점
+					</p>
+				</div>
+				<div class="last m_review m_review4">
+					<img src="images/REVIEW_1.jpg" alt="베스트리뷰4">
+					<p class="m_review_tit">
+						최고의 선택 엘리시움...<br>
+						이** ㅣ 일산 직영점
+					</p>
+				</div>
+				<p class="m_more"><a href="#">MORE→</a></p>
+			</section>
+			<section class="m_showRoom">
+				<p class="m_main_tit">SHOWROOM</p>
+				<div class="m_showroom_info">
+					<img src="images/m_showroom.png" alt="모바일쇼룸사진">
+						<p class="m_more_btn">
+							<a href="#">MORE→</a>
+						</p>
+				</div>
+			</section>
+		</article>
+		<!--m_container end-->
+
+		<article id="container">
+			<div class="popUp">
+				<img src="images/desktop_event_popup1.png">
+			</div>
+			<div class="close">
+				<a href="#" class="on"></a>
+			<div>
+			<section class="mainslide_section">
+				<ul class="mainSlide">
+					<li class="main1"><img src="images/mainslide1.png" alt="메인슬라이드1"></li>
+					<li class="main2"><img src="images/mainslide2.png" alt="메인슬라이드2"></li>
+					<li class="main3"><img src="images/mainslide3.png" alt="메인슬라이드3"></li>
+				</ul>
+			</section>			
+			<section class="ourFavorites">
+				<p class="main_tit">OUR FAVORITES</p>
+				<p class="sub_tit"><a href="#">All→</a></p>
+				<div class="best_wrap">
+					<div class="best_product_img1">
+						<img src="images/BEST1.png" alt="베스트소파1">
+						<p class="product_tit">로에베 3인 프리미엄 소가죽 소파</p>
+					</div>
+					<div class="best_product_img2">
+						<img src="images/best2.png" alt="베스트소파2">
+						<p class="product_tit">클렉트 4인 스위브 소파</p>
+					</div>
+					<div class="best_product_img3">
+						<img src="images/best3.png" alt="베스트소파3">
+						<p class="product_tit">리피 2인 에센셜 소가죽 소파</p>
+					</div>
+				</div>
+			</section>
+			<section class="imagineYourLife">
+				<p class="main_tit">IMAGINE<br>YOUR LIFE</p>
+				<div class="living_img">
+					<img src="images/imagine1.png">
+				</div>
+				<div class="info pro_info1">
+					<p class="tit tiam_tit"><a href="#">TIAM</a></p>
+					<p class="icon pro_icon1"><a href="#"><img src="images/product_icon.png" alt="더보기아이콘"></a></p>
+				</div>
+				<div class="info pro_info2">
+					<p class="tit ruhig_tit"><a href="#">RUHIG S</a></p>
+					<p class="icon pro_icon2"><a href="#"><img src="images/product_icon.png" alt="더보기아이콘"></a></p>
+				</div>
+				<div class="info pro_info3">
+					<p class="tit clekt_tit"><a href="#">클렉트 4인</a></p>
+					<p class="icon pro_icon3"><a href="#"><img src="images/product_icon.png" alt="더보기아이콘"></a></p>
+				</div>
+				<div class="info pro_info4">
+					<p class="tit days_tit"><a href="#">데이즈 쿠션</a></p>
+					<p class="icon pro_icon4"><a href="#"><img src="images/product_icon.png" alt="더보기아이콘"></a></p>
+				</div>
+			</section>
+			<section class="material_info">
+				<div class="febric_detail">
+					<div class="febric_text">
+						<p class="title febric_tit">
+							THE<br>
+							ORIGINAL<br>
+							EURO FABRIC<br>
+							MADE IN SPAIN
+						</p>
+						<p class="explan febric_explan">
+							스페인 현지에서 생산된<br> 
+							기능성 소재를 직수입하여<br>
+							각종 오염물질을 쉽게 제거할 수<br>
+							있고, 미생물 서식을 방지 해줍니다.
+						</p>
+						<p class="more">
+							<a href="#">MORE→</a>
+						</p>
+					</div>
+					<img src="images/febric.png" alt="패브릭소재사진">
+				</div>
+				<div class="leather_detail">
+					<img src="images/leather.png" alt="가죽소재사진">
+					<div class="leather_text">
+						<p class="title leather_tit">
+							PREMIUM<br>
+							ANILIN PLUS<br>
+							LEATHER
+						</p>
+						<p class="explan leather_explan">
+							내구성이 좋고 천연소재의 부드러운<br> 
+							질감을 유지하는 명품 가죽입니다.
+						</p>
+						<p class="more">
+							<a href="#">MORE→</a>
+						</p>
+					</div>	
+				</div>
+			</section>
+			<section class="bestReview">
+				<p class="main_tit">BEST REVIEW</p>
+				<p class="sub_tit">All→</p>
+				<div class="review">
+					<div class="review_top">
+						<div class="reviewImg review_img1">
+							<img src="images/REVIEW_6.jpg" alt="베스트리뷰1">
+							<p class="review_tit">엘리시움 소파 너무 맘에 들어요!</p>
+							<p class="review_name">김** ㅣ 안산 본점</p>
+						</div>
+						<div class="reviewImg review_img2">
+							<img src="images/REVIEW_3.jpg" alt="베스트리뷰2">
+							<p class="review_tit">리피를 선택 할 때까지!</p>
+							<p class="review_name">박** ㅣ 남양주 본점</p>
+						</div>
+						<div class="reviewImg review_img3">
+							<img src="images/REVIEW_BEST1.jpg" alt="베스트리뷰3">
+							<p class="review_tit">우리집 거실의 중심은 Elysium입니다.</p>
+							<p class="review_name">김** ㅣ 일산 직영점</p>
+						</div>
+						<div class="reviewImg review_img4">
+							<img src="images/REVIEW_1.jpg" alt="베스트리뷰4">
+							<p class="review_tit">최고의 선택 엘리시움 클렉트</p>
+							<p class="review_name">이** ㅣ 일산 직영점</p>
+						</div>
+					</div>
+					<div class="review_bottom">
+						<div class="reviewImg review_img5">
+							<img src="images/REVIEW_BEST3.jpg" alt="베스트리뷰5">
+							<p class="review_tit">명품소파사고 명품보스턴백도 받았어요!</p>
+							<p class="review_name">한** ㅣ 남양주 본점</p>
+						</div>
+						<div class="reviewImg review_img6">
+							<img src="images/REVIEW_BEST4.jpg" alt="베스트리뷰6">
+							<p class="review_tit">로에베 차콜</p>
+							<p class="review_name">유** ㅣ 일산 직영점</p>
+						</div>
+						<div class="reviewImg review_img7">
+							<img src="images/REVIEW_5.jpg" alt="베스트리뷰7">
+							<p class="review_tit">소파는 역시 친환경 엘리시움 입니다~</p>
+							<p class="review_name">정** ㅣ 안산 본점</p>
+						</div>
+						<div class="reviewImg review_img8">
+							<img src="images/REVIEW_2.png" alt="베스트리뷰8">
+							<p class="review_tit">소파 잘 받았습니다.</p>
+							<p class="review_name">예** ㅣ 안산 본점</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="showRoom">
+				<p class="main_tit">SHOWROOM</p>
+				<div class="showroom_info">
+					<img src="images/showroom.png" alt="쇼룸사진">
+						<p class="more_btn">
+							<a href="#">MORE→</a>
+						</p>
+				</div>
+			</section>
+		</article>
+		<!--container end-->
+
+		<footer id="m_footer">
+			<div class="m_footer_info">
+				<ul class="m_fnb">
+					<li><a href="#">회사소개</a></li>
+					<li><a href="#">제휴문의</a></li>
+					<li><a href="#">개인정보처리방침</a></li>
+					<li><a href="#">이용약관</a></li>
+				</ul>
+			</div>
+			<div class="m_footer_inner">
+				<p>
+					(주)Elysium<br>
+					대표이사 : 엄채림 ㅣ 주소 : 경기도 안산시 본오산단로 67-12 (본오동)<br>
+					사업자등록번호 : 123-45-67890 ㅣ 통신판매업신고 : 2018-안산-00<br>
+					개인정보관리책임자 : 엄채림 ㅣ A/S 센터 : 1577-5404<br>
+					Copyright (c) 2020 Elysium INC. All rights reserved.<br>
+				</p>	
+		</footer>
+		<!--m_footer end-->
+
+		<footer id="real_footer">
+			<div class="footer_info">
+				<ul class="fnb">
+					<li><a href="#">회사소개</a></li>
+					<li><a href="#">제휴문의</a></li>
+					<li><a href="#">개인정보처리방침</a></li>
+					<li><a href="#">이용약관</a></li>
+				</ul>
+			</div>
+			<div class="footer_inner">
+				<img src="images/logo.png">
+				<p>
+					(주)Elysium<br>
+					대표이사 : 엄채림 ㅣ 주소 : 경기도 안산시 본오산단로 67-12 (본오동)<br>
+					사업자등록번호 : 123-45-67890 ㅣ 통신판매업신고 : 2018-경기안산-0099<br>
+					개인정보관리책임자 : 엄채림 ㅣ A/S 센터 : 1577-5404 ㅣ 대표번호 : 1588-5404<br>
+					Copyright (c) 2020 Elysium INC. All rights reserved.<br>
+				</p>	
+				<ul class="snsIcon">
+					<li>
+						<a href="#"><img src="images/facebook.png" alt="페이스북아이콘"></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/instagram.png" alt="인스타그램아이콘"></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/twitter.png" alt="트위터아이콘"></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/utube.png" alt="유튜브아이콘"></a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+		<!--footer end-->
+	</body>
+</html>
